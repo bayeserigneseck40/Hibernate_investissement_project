@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15 mai 2022 15:03:36 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="models.Personne" table="personne" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="nom" length="254" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="prenom" length="254" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="254" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="254" />
+        </property>
+        <property name="telephone" type="string">
+            <column name="telephone" length="254" />
+        </property>
+        <property name="cin" type="java.lang.Integer">
+            <column name="cin" />
+        </property>
+        <property name="role" type="string">
+            <column name="role" length="254" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+            </property>
+        <!--  
+        <one-to-one name="client" class="models.Client"></one-to-one>
+        <set name="detailbiens" table="detailbien" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id" not-null="true" />
+            </key>
+            <one-to-many class="models.Detailbien" />
+        </set>
+        <one-to-one name="gerant" class="models.Gerant"></one-to-one>
+        <one-to-one name="entrepreneur" class="models.Entrepreneur"></one-to-one>
+        <set name="messages" table="message" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="per_id" not-null="true" />
+            </key>
+            <one-to-many class="models.Message" />
+        </set>
+        <one-to-one name="administrateur" class="models.Administrateur"></one-to-one>
+          -->
+    </class>
+  
+</hibernate-mapping>

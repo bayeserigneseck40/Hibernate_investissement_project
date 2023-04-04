@@ -1,0 +1,101 @@
+ <html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+<h:head>  
+    <title>Produit CRUD</title> 
+      <link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"
+    media="all"></link>
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css"
+    media="all"></link>  
+    
+</h:head>  
+<h:body  style="background-color: whitesmoke;
+">
+    <h:form >
+        <p:megaMenu orientation="horizontal" style="margin:auto" autoDisplay="false">
+            <p:submenu label="Accueil" icon="pi pi-fw pi-video">
+                <p:column>
+                    <p:submenu label="Accueil">
+                        <p:menuitem value="Page Principal" url="PagePrincipal.xhtml"/>
+                        <p:menuitem value="Accueil" url="AccueilClient.xhtml"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label="Ajouter Services" icon="pi pi-fw pi-users">
+                <p:column>
+                    <p:submenu label="Ajouter">
+                        <p:menuitem value="Ajouter Element" url="AjouterBien.xhtml"/>
+                    </p:submenu>
+                </p:column>
+                </p:submenu>
+            <p:submenu label="Ajouter Client" icon="pi pi-fw pi-calendar">
+                <p:column>
+                    <p:submenu label="Ajouter">
+                        <p:menuitem value="Ajouter Client" url="AjouterClient.xhtml"/>
+                    </p:submenu>
+                </p:column>
+              </p:submenu>
+            <p:submenu label="Mes Services" icon="pi pi-fw pi-cog">
+                <p:column>
+                    <p:submenu label="Service">
+                        <p:menuitem value="service" url="himobilier.xhtml"/>
+                       
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+                        <p:submenu label="Statistiques" icon="pi pi-fw pi-cog">
+                <p:column>
+                    <p:submenu label="states">
+                        <p:menuitem value="Statistiques"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+        </p:megaMenu>
+         <p:submenu label="Contact" icon="pi pi-fw pi-cog">
+                <p:column>
+                    <p:submenu label="Contact">
+                        <p:menuitem value="contact" url="Contact.xhtml"/>
+                        
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+        </h:form> 
+<div class="card">
+     <h:form style="margin:auto;
+                    width:40%;
+                    background-color: whitesmoke;
+                    height:80%;">  
+           
+            <p:panelGrid columns="2">  
+                 <h:outputLabel for="id" value="Identifiant: *" />  
+                 <h:inputText id="id" value="#{personneBean.nouvellepersonne.id}" label="identifiant" placeholder="Entrer votre identifiant" />  
+                  
+                 <h:outputLabel for="pr" value="Prenom: *" />
+                <p:inputText id="pr" value="#{personneBean.nouvellepersonne.prenom}" label="prenom" placeholder="Entrer votre prenom" />  
+                <h:outputLabel for="nm" value="Nom: *" />  
+                <p:inputText id="nm" value="#{personneBean.nouvellepersonne.nom}" label="Nom" placeholder="Entrer votre nom" />        
+                <h:outputLabel for="Email" value="Login:" />  
+                <p:inputText id="Email" label="Email" value="#{personneBean.nouvellepersonne.login}" placeholder="Entrer votre Email" />  
+                <p:outputLabel for="pwd" value="Mot de Pass" />  
+                <p:password id="pwd" label="Mot de Pass" value="#{personneBean.nouvellepersonne.password}" placeholder="Entrer votre password" />
+                 <h:outputLabel for="tel" value="Tel: *" />  
+                <p:inputText id="tel" value="#{personneBean.nouvellepersonne.telephone}" label="TEL" placeholder="Entrer votre Numero" />  
+                <h:outputLabel for="cin" value="Nom: *" />  
+                <p:inputText id="cin" value="#{personneBean.nouvellepersonne.cin}" label="CIN" placeholder="Entrer votre CIN" />  
+                 <h:outputLabel for="rl" value="Role:" />  
+                <p:inputText id="rl" label="Email" value="#{personneBean.nouvellepersonne.role}" placeholder="Entrer votre role" />    
+                <p:commandButton value="Enregistrer" ajax="true" icon="ui-icon-disk"  actionListener="#{personneBean.insererUtilisateur()}" oncomplete="handleComplete(xhr, status, args)" />  
+                <p:commandButton value="Cancel" id="cancelButtonId" onclick="handleComplete(xhr, status, args)" />  
+            </p:panelGrid>  
+        </h:form>  
+       
+    <h:outputScript id="handleCompleteScript" target="body">  
+    </h:outputScript>  
+  </div>
+</h:body>  
+  
+</html>  

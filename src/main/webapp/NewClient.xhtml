@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>G Hôtels</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <p:panelGrid columns="2">
+                        SUNU <br></br>ENTREPRISE
+                        <p:clock autoSync="true"/>
+                    </p:panelGrid>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south"  size="45" style="text-align: center" closable="true" collapsible="true">
+                    <p:outputLabel value="Projet JEE" /> 
+                    <p:outputLabel value=" : MadeBYBSS"/>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="240" header="Menu" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Acceuil">
+                                <p:menuitem value="Accueil"  outcome="AccueilGerant"/>
+                                 <p:menuitem value="New Client"  outcome="NewClient"/>
+                                  <p:menuitem value="Administrer mes biens"  outcome="BienImobilier"/>
+                                   <p:menuitem value="Contact"  outcome="ContactGerant"/>
+                                  <p:menuitem value="Deconnexion"  outcome="Login"/>
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    
+                    <f:view>
+                        <h:form style="margin:auto;
+                    width:40%;
+                    background-color: whitesmoke;
+                    height:80%;">  
+                      <p:fieldset legend="Ajouter Client">
+           
+            <p:panelGrid columns="2">  
+                 <h:outputLabel for="id" value="Identifiant: *" />  
+                 <h:inputText id="id" value="#{personneBean.nouvellepersonne.id}" label="identifiant" placeholder="Entrer votre identifiant" />  
+                  
+                 <h:outputLabel for="pr" value="Prenom: *" />
+                <p:inputText id="pr" value="#{personneBean.nouvellepersonne.prenom}" label="prenom" placeholder="Entrer votre prenom" />  
+                <h:outputLabel for="nm" value="Nom: *" />  
+                <p:inputText id="nm" value="#{personneBean.nouvellepersonne.nom}" label="Nom" placeholder="Entrer votre nom" />        
+                <h:outputLabel for="Email" value="Login:" />  
+                <p:inputText id="Email" label="Email" value="#{personneBean.nouvellepersonne.login}" placeholder="Entrer votre Email" />  
+                <p:outputLabel for="pwd" value="Mot de Pass" />  
+                <p:password id="pwd" label="Mot de Pass" value="#{personneBean.nouvellepersonne.password}" placeholder="Entrer votre password" />
+                 <h:outputLabel for="tel" value="Tel: *" />  
+                <p:inputText id="tel" value="#{personneBean.nouvellepersonne.telephone}" label="TEL" placeholder="Entrer votre Numero" />  
+                <h:outputLabel for="cin" value="Nom: *" />  
+                <p:inputText id="cin" value="#{personneBean.nouvellepersonne.cin}" label="CIN" placeholder="Entrer votre CIN" />  
+                 <h:outputLabel for="rl" value="Role:" />  
+                <p:inputText id="rl" label="Email" value="#{personneBean.nouvellepersonne.role}" placeholder="Entrer votre role" />    
+                <p:commandButton value="Enregistrer" ajax="true" icon="ui-icon-disk"  actionListener="#{personneBean.insererUtilisateur()}" oncomplete="handleComplete(xhr, status, args)" />  
+                <p:commandButton value="Cancel" id="cancelButtonId" onclick="handleComplete(xhr, status, args)" />  
+            </p:panelGrid>  
+                </p:fieldset>
+        </h:form>  
+                    </f:view>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>

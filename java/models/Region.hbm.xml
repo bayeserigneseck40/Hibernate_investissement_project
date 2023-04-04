@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15 mai 2022 15:03:36 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="models.Region" table="region" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pays" class="models.Pays" fetch="select">
+            <column name="pay_id" not-null="true" />
+        </many-to-one>
+        <property name="nomregion" type="string">
+            <column name="nomregion" length="254" />
+        </property>
+        <set name="entreprises" table="entreprise" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reg_id" not-null="true" />
+            </key>
+            <one-to-many class="models.Entreprise" />
+        </set>
+    </class>
+</hibernate-mapping>

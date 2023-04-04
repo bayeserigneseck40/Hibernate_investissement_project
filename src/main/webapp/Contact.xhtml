@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>User CRUD</title>
+      <link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"
+    media="all"></link>
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css"
+    media="all"></link>
+</h:head>
+<h:body >
+    <h:form >
+        <p:megaMenu orientation="horizontal" style="margin:auto" autoDisplay="false">
+            <p:submenu label="Accueil" icon="pi pi-fw pi-video">
+                <p:column>
+                    <p:submenu label="Accueil">
+                        <p:menuitem value="Page Principal" url="PagePrincipal.xhtml"/>
+                        <p:menuitem value="Accueil" url="AccueilClient.xhtml"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label="Ajouter Services" icon="pi pi-fw pi-users">
+                <p:column>
+                    <p:submenu label="Ajouter">
+                        <p:menuitem value="Ajouter Element" url="AjouterBien.xhtml"/>
+                    </p:submenu>
+                </p:column>
+                </p:submenu>
+            <p:submenu label="Ajouter Client" icon="pi pi-fw pi-calendar">
+                <p:column>
+                    <p:submenu label="Ajouter">
+                        <p:menuitem value="Ajouter Client" url="AjouterClient.xhtml"/>
+                    </p:submenu>
+                </p:column>
+              </p:submenu>
+            <p:submenu label="Mes Services" icon="pi pi-fw pi-cog">
+                <p:column>
+                    <p:submenu label="Service">
+                        <p:menuitem value="service" url="himobilier.xhtml"/>
+
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+                        <p:submenu label="Statistiques" icon="pi pi-fw pi-cog">
+                <p:column>
+                    <p:submenu label="states">
+                        <p:menuitem value="Statistiques"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+        </p:megaMenu>
+        </h:form>
+    <h1 style="text-align:center"
+                    >CONTACTEZ-NOUS</h1>
+<style type="text/css">
+    .ui-log {
+        left: auto;
+        right: 20px;
+        top: 300px;
+    }
+
+    .other-content input {
+        margin-right: .5rem;
+        margin-bottom: .5rem;
+    }
+</style>
+
+
+
+<h:form enctype="multipart/form-data" style="margin:auto;
+                    width:60%;
+                    background-color: whitesmoke;
+                    height:100%;">
+<p:growl id="messages" showDetail="true" />
+    <div class="ui-fluid">
+        <p:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+            <p:outputLabel for="input" value="USERNAME *:"/>
+            <p:inputText id="input" placeholder="Entrer VOTRE NOM" value="#{elementBean.nouvelleElement.id}"/>
+            <p:outputLabel for="area" value="Email*:"/>
+            <p:inputText id="area" placeholder="Entrer votre Email" value="#{elementBean.nouvelleElement.nom}"/>
+            <p:outputLabel for="type" value="OBJECT *:"/>
+            <p:inputText id="type" placeholder="Entrer l'Objet de votre message" value="#{elementBean.nouvelleElement.type}"/>
+
+
+               <p:outputLabel for="type" value="Message*:"/>
+         <p:inputTextarea  rows="6" label="E-mail">
+            <f:facet name="prepend">
+            <h:outputText value="@" />
+            </f:facet>
+            <f:facet name="append">
+            </f:facet>
+          </p:inputTextarea>
+            <p:outputLabel value="#{barcodeBean.nonEmptyTextCapital}" id="label"/>
+               <br />
+            </p:panelGrid>
+           <p:commandButton value="Submit" ajax="false" actionListener="#{elementBean.insererElement()}"  />
+            </div>
+            </h:form>
+
+            <h:head>
+        <title>Locatisation des Entreprises</title>
+        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+       </h:head>
+
+        <f:view>
+            <h:form id="f2">
+                <p:fieldset legend="Locatisation des Entreprises ">
+                    <p:growl id="growl" showDetail="true" />
+                    <p:gmap id="gmap" center="31.6,-8" zoom="7" type="HYBRID" model="#{hotelBean.simpleModel}"  style="width:100%;height:600px">
+                        <p:ajax event="overlaySelect" listener="#{hotelBean.onMarkerSelect}" update="growl" />
+                    </p:gmap>
+                </p:fieldset>
+            </h:form>
+        </f:view>
+</h:body>
+</html>

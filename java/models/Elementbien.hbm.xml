@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15 mai 2022 15:03:36 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="models.Elementbien" table="elementbien" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="nom" length="254" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="254" />
+        </property>
+        <property name="datecreation" type="date">
+            <column name="datecreation" length="13" />
+        </property>
+        <property name="dateexpiration" type="date">
+            <column name="dateexpiration" length="13" />
+        </property>
+        <property name="prix" type="string">
+            <column name="prix" length="255" />
+        </property>
+        <property name="categorie" type="string">
+            <column name="categorie" length="255" />
+        </property>
+        <!--  
+        
+        <set name="clients" table="assoclientelmtbien" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id" not-null="true" />
+            </key>
+            <many-to-many entity-name="models.Client">
+                <column name="cli_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="detailbiens" table="detailbien" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ele_id" not-null="true" />
+            </key>
+            <one-to-many class="models.Detailbien" />
+        </set>
+        <set name="payements" table="association_23" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="id" not-null="true" />
+            </key>
+            <many-to-many entity-name="models.Payement">
+                <column name="pay_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="biens" table="bien" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ele_id" not-null="true" />
+            </key>
+            <one-to-many class="models.Bien" />
+        </set>
+        -->
+    </class>
+</hibernate-mapping>

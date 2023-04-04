@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">  
+<h:head>  
+    <title>User CRUD</title>  
+    <style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style>
+<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"
+    media="all"></link>
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css"
+    media="all"></link>
+</h:head>  
+<h:body>
+type :#{elementean.type} 
+nom :#{elementean.nom} 
+prix :#{elementean.prix} 
+<h:form>
+        <p:megaMenu orientation="horizontal" autoDisplay="false">
+            <p:submenu label="Accueil" icon="pi pi-fw pi-video">
+                <p:column>
+                    <p:submenu label="information">
+                        <p:menuitem value="Page Principal" url="PagePrincipal.xhtml"/>
+                        <p:menuitem value="Accueil" url="AccueilClient.xhtml"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label="Services" icon="pi pi-fw pi-users">
+                <p:column>
+                    <p:submenu label="User 3">
+                        <p:menuitem value="imoblier" url="data.xhtml"/>
+                        
+                    </p:submenu>
+                </p:column>
+                </p:submenu>
+            <p:submenu label="Information" icon="pi pi-fw pi-calendar">
+                <p:column>
+                    <p:submenu label="information">
+                        <p:menuitem value="informations"/>
+                    </p:submenu>
+                </p:column>
+              </p:submenu>
+            <p:submenu label="Contact" icon="pi pi-fw pi-cog">
+                <p:column>
+                    <p:submenu label="Contact">
+                        <p:menuitem value="contact"/>
+                        
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+             <p:submenu label="Contact" icon="pi pi-fw pi-cog">
+                <p:column>
+                    <p:submenu label="Contact">
+                        <p:menuitem value="contact" url="Contact.xhtml"/>
+                        
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+        </p:megaMenu>
+        </h:form>
+ 
+ 
+<h:form id="form">
+    <p:dataGrid var="elementbien" value="#{elementBean.biens}" columns="3" layout="grid"
+        rows="12" paginator="true" id="cars"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
+         
+        <f:facet name="header">
+            faites votre reservation
+        </f:facet>
+ 
+        <p:panel header="#{elementbien.id}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
+                <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+ 
+                <h:outputText value="#{elementbien.nom}" />
+                <h:outputText value="#{elementbien.prix}" />
+                <h:outputText value="#{elementbien.type}" />
+                 
+ 
+                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
+                    <f:setPropertyActionListener value="seck" target="#{dataGridView.selectedCar}" />
+                </p:commandLink>
+            </h:panelGrid>
+             <p:toolbarGroup>
+            
+                <p:commandButton  value="Reserver" icon="pi pi-plus" actionListener="#{elementBean.changeElement(elementbien)}"
+                                update=":form:manage-product-content"  oncomplete="PF('manageProductDialog').show()" process="@this"
+                                 styleClass="ui-button-success" style="margin-right: .5rem">
+                  <!--   <p:resetInput target=":form:manage-product-content"/>--> 
+                </p:commandButton>
+                
+                </p:toolbarGroup>
+                
+           <!--   <p:button value="Reserver" oncomplete="PF('carDialog').show()"  icon="pi pi-star" 
+                 style="margin-right:20px;">
+                <f:param name="bienId" value="#{elementbien.id}" />
+                </p:button>
+                -->
+        </p:panel>
+ 
+       </p:dataGrid>
+       
+      
+             <p:dialog header="confirmer votre reservation" showEffect="fade" modal="true"
+                  widgetVar="manageProductDialog">
+            <p:outputPanel id="manage-product-content" class="ui-fluid">
+          
+                    <p:graphicImage name="images/product/#{crudView.selectedProduct.image}" library="demo"
+                                    styleClass="product-image"
+                                    rendered="#{not empty crudView.selectedProduct.image}"/>
+                    <div class="p-field">
+                        <p:outputLabel for="name">ID Personne</p:outputLabel>
+                        <p:inputNumber id="name" value="#{DetailbienBean.nouvelleDetailBien.personne}" required="true"/>
+                    </div>
+                    <div class="p-field">
+                        <p:outputLabel for="prenom">ID du Bien</p:outputLabel>
+                        <p:inputNumber id="prenom" value="#{DetailbienBean.nouvelleDetailBien.elementbien}"/>
+                    </div>
+                    <div class="p-field">
+                        <p:outputLabel for="lg">Email</p:outputLabel>
+                        <p:inputText id="lg" value="#{elementBean.element.type}"/>
+                    </div>
+                    <div class="p-formgrid p-grid">
+                        <div class="p-field p-col">
+                            <p:outputLabel for="price">telephone</p:outputLabel>
+                            <p:inputNumber id="price" value="#{DetailbienBean.nouvelleDetailBien.prix}"
+                                           symbol=" USD" symbolPosition="s"
+                                           decimalSeparator="." thousandSeparator=","/>
+                        </div>
+                        <div class="p-field p-col">
+                            <p:outputLabel for="datecreation">Date debut</p:outputLabel>
+                            <p:calendar id="datecreation"  value="#{DetailbienBean.nouvelleDetailBien.datecreation}"/>
+                        </div>
+                         <div class="p-field p-col">
+                            <p:outputLabel for="date">Date fin</p:outputLabel>
+                            <p:calendar id="date"  value="#{DetailbienBean.nouvelleDetailBien.dateexpiration}"/>
+                        </div>
+                    </div>
+            </p:outputPanel>
+
+            <f:facet name="footer">
+                <p:commandButton value="Save" icon="pi pi-check" actionListener="#{DetailbienBean.insererDetailBien()}"
+                                 update="manage-product-content" process="manage-product-content @this"/>
+                <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('manageProductDialog').hide()"
+                                 class="ui-button-secondary"/>
+            </f:facet>
+           </p:dialog>
+    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+         
+                <f:facet name="header">
+                    <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
+                </f:facet>
+                 
+                <h:outputText value="Id:" />
+                <h:outputText value="#{elementBean.selectedElement.id}" />
+ 
+                <h:outputText value="Year" />
+                <h:outputText value="#{elementBean.selectedElement.nom}" />
+ 
+                <h:outputText value="Color:" />
+                <h:outputText value="#{elementBean.selectedElement.type}" style="color:#{dataGridView.selectedCar.color}"/>
+             
+                <h:outputText value="Price" />
+                <h:outputText value="$#{elementBean.selectedElement.prix}" />
+        </p:outputPanel>
+    </p:dialog>
+</h:form>
+</h:body>
+</html>

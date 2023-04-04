@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>G Entreprises</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <p:panelGrid columns="2">
+                      SUNU<br></br>ENTREPRISE
+                        <p:clock autoSync="true"/>
+                    </p:panelGrid>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south"  size="45" style="text-align: center" closable="true" collapsible="true">
+                    <p:outputLabel value="Made By BSS" /> 
+                    <p:outputLabel value=" : Entreprise"/>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="240" header="Rejoignez-Nous" collapsible="true">
+                  
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                  <f:view>
+            <h:form id="f2">
+                <p:fieldset legend="Se connecter ">
+                    <p:growl id="growl" showDetail="true" />
+                   <div class="card">
+       <H1 style="text-align:center;
+                    "></H1>
+     <h:form style="margin:auto;
+                    width:40%;
+                    background-color: whitesmoke;
+                    height:80%;">  
+            <p:panelGrid columns="2">  
+                <h:outputLabel for="Lg" value="Login: *" />  
+                <p:inputText id="Lg" value="#{personneBean.utilisateur.login}" label="login" placeholder="Entrer votre Login" />   
+                <p:outputLabel for="pwd" value="Mot de Pass" />  
+                <p:password id="pwd" label="Mot de Pass" value="#{personneBean.utilisateur.password}" placeholder="Entrer votre password" />  
+                <p:commandButton value="Connecter" ajax="true" icon="ui-icon-disk"  actionListener="#{personneBean.verifierMotPasse()}" oncomplete="handleComplete(xhr, status, args)" />  
+                <p:commandButton value="Cancel" id="cancelButtonId" onclick="handleComplete(xhr, status, args)" />  
+            </p:panelGrid>  
+        </h:form>    
+    <h:outputScript id="handleCompleteScript" target="body">  
+    </h:outputScript>  
+  </div>
+                </p:fieldset>
+            </h:form>
+        </f:view>
+
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>

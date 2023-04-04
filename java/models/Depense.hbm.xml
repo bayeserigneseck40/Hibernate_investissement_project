@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15 mai 2022 15:03:36 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="models.Depense" table="depense" schema="public">
+        <id name="numdepense" type="int">
+            <column name="numdepense" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="rapport" class="models.Rapport" fetch="select">
+            <column name="id" not-null="true" />
+        </many-to-one>
+        <property name="montanrdepense" type="java.lang.Integer">
+            <column name="montanrdepense" />
+        </property>
+    </class>
+</hibernate-mapping>

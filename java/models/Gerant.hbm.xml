@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15 mai 2022 15:03:36 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="models.Gerant" table="gerant" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="foreign">
+                <param name="property">personne</param>
+            </generator>
+        </id>
+        <one-to-one name="personne" class="models.Personne" constrained="true"></one-to-one>
+        <set name="rapports" table="association_17" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="ger_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="models.Rapport">
+                <column name="id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="clients" table="client" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ger_id" />
+            </key>
+            <one-to-many class="models.Client" />
+        </set>
+    </class>
+</hibernate-mapping>

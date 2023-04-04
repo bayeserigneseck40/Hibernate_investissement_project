@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>G Hôtels</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <p:panelGrid columns="2">
+                        SUNU <br></br>ENTREPRISE
+                        <p:clock autoSync="true"/>
+                    </p:panelGrid>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south"  size="45" style="text-align: center" closable="true" collapsible="true">
+               <p:outputLabel value="Made by BSS" /> 
+                    <p:outputLabel value=" : Entreprise"/>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="240" header="Menu" collapsible="true">
+                  
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form enctype="multipart/form-data" style="margin:auto;
+                    width:60%;
+                    background-color: whitesmoke;
+                    height:100%;">
+                    <p:fieldset legend="Continuez votre Inscription">
+<p:growl id="messages" showDetail="true" />
+    <div class="ui-fluid">
+        <p:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+            <p:outputLabel for="input" value="Identifiant *:"/>
+            <p:inputText id="input" placeholder="Entrer un identifiant" value="#{entrepriseBean.nouvelleEntreprise.id}"/>
+ 
+                 <p:outputLabel for="area" value="Entrepreneur*:"/>
+            <p:inputText id="area" placeholder="Entrer votre nom" value="#{entrepriseBean.nouvelleEntreprise.entrepreneur}"/>
+            
+            
+            <p:outputLabel for="type" value="Nom Entreprise *:"/>
+            <p:inputText id="type" placeholder="Entrer le type de l'element" value="#{entrepriseBean.nouvelleEntreprise.nomentreprise}"/>
+        
+              
+           
+            <p:outputLabel for="calenda" value="Date de creation *:"/>
+            <p:calendar id="calenda" placeholder="Entrer votre la date de creation" value="#{entrepriseBean.nouvelleEntreprise.datedebut}"/>
+             <p:outputLabel for="calendar" value="Date de expiraton *:"/>
+            <p:calendar id="calendar" placeholder="Entrer la date d'expiration" value="#{entrepriseBean.nouvelleEntreprise.datefin}"/>
+              
+               <div>
+                    <h:selectOneMenu value="#{entrepriseBean.nouvelleEntreprise.region}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2"
+                     select2="true">
+                      <f:selectItem itemLabel="(Please select Region)"/>
+                    <f:selectItem itemLabel="Dakar" itemValue="1" />
+                    <f:selectItem itemLabel="Diourbel" itemValue="2" />
+                    <f:selectItem itemLabel="Louga" itemValue="3" />
+                    <f:selectItem itemLabel="Kaolack" itemValue="4" />
+                    <f:selectItem itemLabel="Tamba" itemValue="5" />
+                    <f:selectItem itemLabel="Ziguinshor" itemValue="6" />
+                    <f:selectItem itemLabel="Kolda" itemValue="7" />
+                    <f:selectItem itemLabel="Matam" itemValue="8" />
+                    <f:selectItem itemLabel="Kaffrine" itemValue="9" />
+                    </h:selectOneMenu>
+                  </div>
+            </p:panelGrid>
+              <p:commandButton value="Submit" ajax="false" actionListener="#{entrepriseBean.insererEntreprise()}"  />
+            </div>
+                </p:fieldset>
+            </h:form>
+                   
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15 mai 2022 15:03:36 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="models.Entreprise" table="entreprise" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <!--  <many-to-one name="categorie" class="models.Categorie" fetch="select">
+            <column name="cat_id" not-null="true" />
+        </many-to-one>-->
+        <many-to-one name="client" class="models.Client" fetch="select">
+            <column name="cli_id" />
+        </many-to-one>
+        <many-to-one name="entrepreneur" class="models.Entrepreneur" fetch="select">
+            <column name="ent_id" not-null="false" />
+        </many-to-one>
+        <many-to-one name="region" class="models.Region" fetch="select">
+            <column name="reg_id" not-null="true" />
+        </many-to-one>
+        <property name="nomentreprise" type="string">
+            <column name="nomentreprise" length="254" />
+        </property>
+        <property name="datedebut" type="date">
+            <column name="datedebut" length="13" />
+        </property>
+        <property name="datefin" type="date">
+            <column name="datefin" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

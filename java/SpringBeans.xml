@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	
+	<bean id="pers" class="models.Personne"/>	
+	<bean id="elmt" class="models.Elementbien"/>
+	<bean id="entr" class="models.Entreprise"/>	
+	<bean id="detail" class="models.Detailbien"/>
+	<bean id="biens" class="models.Bien"/>	
+</beans>
+
+

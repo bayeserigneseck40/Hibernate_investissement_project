@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">1610</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Entreprises</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+         <property name="hibernate.search.autoregister_listeners">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+         <mapping resource="models/Personne.hbm.xml"/>
+         <mapping resource="models/Elementbien.hbm.xml"/>
+         <mapping resource="models/Entreprise.hbm.xml"/>
+         <mapping resource="models/Entrepreneur.hbm.xml"/>
+         <mapping resource="models/Depense.hbm.xml"/>
+        <!--  <mapping resource="models/Categorie.hbm.xml"/>-->
+         <mapping resource="models/Bien.hbm.xml"/>
+         <mapping resource="models/Administrateur.hbm.xml"/>
+         <mapping resource="models/Entreprise.hbm.xml"/>
+         <mapping resource="models/Detailbien.hbm.xml"/>
+         <mapping resource="models/Gerant.hbm.xml"/>
+         <mapping resource="models/Client.hbm.xml"/>
+         <mapping resource="models/Message.hbm.xml"/>
+          <mapping resource="models/Payement.hbm.xml"/>
+           <mapping resource="models/Pays.hbm.xml"/>
+            <mapping resource="models/Profil.hbm.xml"/>
+             <mapping resource="models/Rapport.hbm.xml"/>
+              <mapping resource="models/Recette.hbm.xml"/>
+               <mapping resource="models/Region.hbm.xml"/>
+                 <mapping resource="models/Service.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

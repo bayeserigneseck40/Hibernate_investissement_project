@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>G Entreprises</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <p:panelGrid columns="2">
+                        SUNU <br></br>ENTREPRISE
+                        <p:clock autoSync="true"/>
+                    </p:panelGrid>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south"  size="45" style="text-align: center" closable="true" collapsible="true">
+                    <p:outputLabel value="exelib 2016" /> 
+                    <p:outputLabel value=" : www.exelib.net"/>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="240" header="Menu" collapsible="true">
+                    <p:menu>
+                         <p:submenu label="Acceuil">
+                            <p:menuitem value="Accueil"  outcome="AccueilClient"/>
+                            <p:menuitem value="Reservation"  outcome="Reservation"/>
+                               <p:menuitem value="Contact"  outcome="ContactClient"/>
+                     
+                                  <p:menuitem value="Deconnexion"  outcome="Login"/>
+
+                        </p:submenu>
+
+                       
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                  
+
+
+
+ 
+<h:form enctype="multipart/form-data" style="margin:auto;
+                    width:60%;
+                    background-color: whitesmoke;
+                    height:100%;">
+                      <p:fieldset legend="Contactez-Nous">
+<p:growl id="messages" showDetail="true" />
+    <div class="ui-fluid">
+        <p:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+            <p:outputLabel for="input" value="USERNAME *:"/>
+            <p:inputText id="input" placeholder="Entrer VOTRE NOM" value="#{elementBean.nouvelleElement.id}"/>
+            <p:outputLabel for="area" value="Email*:"/>
+            <p:inputText id="area" placeholder="Entrer votre Email" value="#{elementBean.nouvelleElement.nom}"/>
+            <p:outputLabel for="type" value="OBJECT *:"/>
+            <p:inputText id="type" placeholder="Entrer l'Objet de votre message" value="#{elementBean.nouvelleElement.type}"/>
+          
+          
+               <p:outputLabel for="type" value="Message*:"/>
+         <p:inputTextarea  rows="6" label="E-mail">
+            <f:facet name="prepend">
+            <h:outputText value="@" />
+            </f:facet>
+            <f:facet name="append">
+            </f:facet>
+          </p:inputTextarea>
+            <p:outputLabel value="#{barcodeBean.nonEmptyTextCapital}" id="label"/>
+               <br />
+            </p:panelGrid>
+           <p:commandButton value="Submit" ajax="false" actionListener="#{elementBean.insererElement()}"  />
+            </div>
+             </p:fieldset>
+            </h:form>
+            
+            <h:head>
+        <title>Locatisation des Entreprises</title>
+        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+       </h:head>
+
+        <f:view>
+            <h:form id="f2">
+                <p:fieldset legend="Locatisation des Entreprises ">
+                    <p:growl id="growl" showDetail="true" />
+                    <p:gmap id="gmap" center="31.6,-8" zoom="7" type="HYBRID" model="#{hotelBean.simpleModel}"  style="width:100%;height:600px">
+                        <p:ajax event="overlaySelect" listener="#{hotelBean.onMarkerSelect}" update="growl" />
+                    </p:gmap>
+                </p:fieldset>
+                 
+                
+            </h:form>
+        </f:view>
+                    
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>

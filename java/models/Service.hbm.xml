@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15 mai 2022 15:03:36 by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="models.Service" table="service" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <!-- <many-to-one name="categorie" class="models.Categorie" fetch="select">
+            <column name="cat_id" not-null="true" />
+        </many-to-one>  -->
+        <many-to-one name="bien" class="models.Bien" fetch="select">
+            <column name="bie_id" />
+        </many-to-one>
+        <many-to-one name="payement" class="models.Payement" fetch="select">
+            <column name="pay_id" />
+        </many-to-one>
+        <property name="nomservice" type="string">
+            <column name="nomservice" length="254" />
+        </property>
+        <set name="biens" table="association_8" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id" not-null="true" />
+            </key>
+            <many-to-many entity-name="models.Bien">
+                <column name="bie_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
